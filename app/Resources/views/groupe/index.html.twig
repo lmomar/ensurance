@@ -1,0 +1,46 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Les groupes</h1>
+        </div>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="col-lg-6">Liste des groupes</div>
+                    <div class="col-lg-6"><a href="{{ path('admin_groupe_new') }}" class="btn btn-primary pull-right">Nouvel Groupe</a></div>
+                </div>
+                <div class="panel-body">
+                    <table data-toggle="table" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th  data-sortable="true">Nom</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for groupe in groupes %}
+                                <tr>
+                                    <td><a href="{{ path('admin_groupe_show', { 'id': groupe.id }) }}">{{ groupe.id }}</a></td>
+                                    <td>{{ groupe.name}}</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-xs"href="#">
+                                            <span class="glyphicon glyphicon-pencil"></span></a>
+                                        <a class="btn btn-danger btn-xs"href="#">
+                                            <span class="glyphicon glyphicon-remove"></span></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!--/.row-->	
+{% endblock %}
